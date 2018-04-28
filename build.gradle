@@ -1,0 +1,30 @@
+buildscript {
+    ext {
+        IDE_GRADLE = "$rootDir/gradle/ide.gradle"
+        JAVA_GRADLE = "$rootDir/gradle/java.gradle"
+        COMMON_GRADLE = "$rootDir/gradle/common.gradle"
+
+        springBootVersion = '2.0.1.RELEASE'
+    }
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//            url 'http://maven.solarule.cn/artifactory/libs-release'
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+allprojects {
+    apply from: IDE_GRADLE
+}
+
