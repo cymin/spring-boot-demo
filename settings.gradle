@@ -1,2 +1,4 @@
 rootProject.name = 'spring-boot-demo'
 include 'spring-boot-data-elasticsearch'
+include 'spring-boot-redis'
+

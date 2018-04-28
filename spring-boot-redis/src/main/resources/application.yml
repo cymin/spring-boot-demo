@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: always
+
+---
+spring:
+  profiles: dev
+  redis:
+#    password: 123456
+
+
+logging:
+  level:
+    com.tsingyun: DEBUG
