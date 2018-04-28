@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  cache:
+    type: simple
+  session:
+    store-type: jdbc
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/Desktop/h2/test-shiro
+    username: sa
+    password: sa
+  jpa:
+    properties:
+      javax.persistence.schema-generation.scripts.action: create
+      javax.persistence.schema-generation.scripts.create-target: build/schema.sql
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    com.tsingyun: debug
+
+shiro:
+  loginUrl: /login
+  chain:
+    enabled: true
+

@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.1.RELEASE'
+        tsingyunBootVersion = '1.1.5'
+    }
+    repositories {
+        maven {
+            url 'http://maven.solarule.cn/artifactory/libs-release'
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven {
+        url 'http://maven.solarule.cn/artifactory/libs-release'
+    }
+}
+
+dependencies {
+//    compile("com.tsingyun.boot:tsingyun-spring-boot-web-starter:$tsingyunBootVersion")
+//    compile("com.tsingyun.boot:rest-spring-boot-web-starter:$tsingyunBootVersion")
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    compile("com.tsingyun.boot:shiro-spring-boot-web-starter:$tsingyunBootVersion")
+    compile('org.springframework.session:spring-session-jdbc:2.0.2.RELEASE')
+    compile('com.h2database:h2')
+    compile('com.alibaba:druid:1.1.9')
+    runtime('mysql:mysql-connector-java')
+}
